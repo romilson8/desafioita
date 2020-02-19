@@ -2,8 +2,10 @@ package com.desafio.itau.dominio;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="apartamento")
 public class Apartamento extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
@@ -18,10 +20,11 @@ public class Apartamento extends AbstractEntity {
 	public Apartamento() {
 	}
 
-	public Apartamento(String numero, Proprietario proprietario) {
+	public Apartamento(String numero, Proprietario proprietario, Condominio condominio) {
 		super();
 		this.numero = numero;
 		this.proprietario = proprietario;
+		this.condominio = condominio;
 	}
 
 	public String getNumero() {
@@ -38,6 +41,14 @@ public class Apartamento extends AbstractEntity {
 
 	public void setProprietario(Proprietario proprietario) {
 		this.proprietario = proprietario;
+	}
+
+	public Condominio getCondominio() {
+		return condominio;
+	}
+
+	public void setCondominio(Condominio condominio) {
+		this.condominio = condominio;
 	}
 
 }

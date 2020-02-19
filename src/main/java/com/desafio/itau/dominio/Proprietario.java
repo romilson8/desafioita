@@ -1,10 +1,13 @@
 package com.desafio.itau.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Proprietario extends AbstractEntity{
@@ -18,20 +21,20 @@ public class Proprietario extends AbstractEntity{
 	@Embedded
 	private Endereco endereco;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="proprietario")
-	private List<Apartamento> apartamentos;
+	private List<Apartamento> apartamentos =  new ArrayList<>();
 
 	public Proprietario() {
 	}
 
-	public Proprietario(String nome, String telefone, String cpf, String email, Endereco endereco, List<Apartamento> apartamentos) {
+	public Proprietario(String nome, String telefone, String cpf, String email, Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.telefone = telefone;
 		this.cpf = cpf;
 		this.email = email;
 		this.endereco = endereco;
-		this.apartamentos = apartamentos;
 	}
 
 	public String getNome() {

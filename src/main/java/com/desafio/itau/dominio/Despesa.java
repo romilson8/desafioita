@@ -7,13 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Despesa extends AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(mappedBy = "despesa")
-	private List<TipoDespesa> tipo;
+	private String nomeDespesa;
 
+	private double valorDespesa;
+
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date data;
 
 	@ManyToOne
@@ -23,33 +27,56 @@ public class Despesa extends AbstractEntity {
 
 	}
 
-	public Despesa(List<TipoDespesa> tipo, Date data) {
-		this.tipo = tipo;
+	public Despesa(String nomeDespesa, double valorDespesa, Date data, Condominio condominio) {
+		super();
+		this.nomeDespesa = nomeDespesa;
+		this.valorDespesa = valorDespesa;
 		this.data = data;
+		this.condominio = condominio;
 	}
 
-	public List<TipoDespesa> getTipo() {
-		return tipo;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setTipo(List<TipoDespesa> tipo) {
-		this.tipo = tipo;
+	public String getNomeDespesa() {
+		return nomeDespesa;
+	}
+
+	public double getValorDespesa() {
+		return valorDespesa;
 	}
 
 	public Date getData() {
 		return data;
 	}
 
+	public Condominio getCondominio() {
+		return condominio;
+	}
+
+	public void setNomeDespesa(String nomeDespesa) {
+		this.nomeDespesa = nomeDespesa;
+	}
+
+	public void setValorDespesa(double valorDespesa) {
+		this.valorDespesa = valorDespesa;
+	}
+
 	public void setData(Date data) {
 		this.data = data;
 	}
 
-	public double getValorTotal() {
-		double valor = 0.0;
-		for (TipoDespesa tipoDespesa : tipo) {
-			valor = +tipoDespesa.getValorDespesa();
-		}
-		return valor;
+	public void setCondominio(Condominio condominio) {
+		this.condominio = condominio;
 	}
+
+//	public double getValorTotal() {
+//		double valor = 0.0;
+//		for (TipoDespesa tipoDespesa : tipo) {
+//			valor = +tipoDespesa.getValorDespesa();
+//		}
+//		return valor;
+//	}
 
 }
