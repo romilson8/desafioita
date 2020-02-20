@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="apartamento")
 public class Apartamento extends AbstractEntity {
@@ -14,6 +16,7 @@ public class Apartamento extends AbstractEntity {
 	@ManyToOne
 	private Proprietario proprietario;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Condominio condominio;
 

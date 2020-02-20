@@ -15,6 +15,8 @@ CREATE TABLE condominio (
     
 INSERT INTO condominio (email, bairro, cep, cidade, estado, logradouro, numero, nome, numero_de_apt, telefone) 
 VALUES ('condominio_montreal@gmail.com', 'Boa Viagem','51030510', 'Recife', 'Pernambuco', 'Rua Viriato Correia', '71', 'Edf Montreal', 76, '33225-5252');
+INSERT INTO condominio (email, bairro, cep, cidade, estado, logradouro, numero, nome, numero_de_apt, telefone) 
+VALUES ('vilavelhal@gmail.com', 'Campinho','55000-000', 'Belo Horizonte', 'Minas Gerais', 'Rua Marques do Pombal', '66', 'Edf Vila Velha', 48, '3678-9955');
 
 
 CREATE TABLE proprietario (
@@ -34,10 +36,10 @@ CREATE TABLE proprietario (
     
     
 INSERT INTO proprietario (cpf, email, bairro, cep, cidade, estado, logradouro, numero, apto, nome, telefone) 
-VALUES ('04044364478','zero.barros@gmail.com', 'Boa Viagem','51030510', 'Recife', 'Pernambuco', 'Rua Viriato Correia', '71', '803', 'Edf Montreal', '96759966');
+VALUES ('04044364478','zero.barros@gmail.com', 'Boa Viagem','51030510', 'Recife', 'Pernambuco', 'Rua Viriato Correia', '71', '803', 'José Romilson S. Barros', '96759966');
 
 INSERT INTO proprietario (cpf, email, bairro, cep, cidade, estado, logradouro, numero, apto, nome, telefone) 
-VALUES ('04641859477','analu@gmail.com', 'Boa Viagem','51030510', 'Recife', 'Pernambuco', 'Rua Viriato Correia', '71', '303', 'Edf Montreal', '99498-5566');
+VALUES ('04641859477','analu@gmail.com', 'Boa Viagem','51030510', 'Recife', 'Pernambuco', 'Rua Viriato Correia', '71', '303', 'Ana Lucia M. Dantas', '99498-5566');
 
 CREATE TABLE apartamento (
    	id integer PRIMARY KEY AUTO_INCREMENT,

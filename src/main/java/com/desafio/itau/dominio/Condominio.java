@@ -25,11 +25,11 @@ public class Condominio extends AbstractEntity {
 	
 	private Integer numeroDeApt;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="condominio")
 	private List<Apartamento> apartamentos;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="condominio")
 	private List<Despesa> despesas;
 

@@ -56,6 +56,10 @@ public class CondominioRepositoryImpl implements CondominioRepositoryQuery {
 			predicates.add(builder.greaterThanOrEqualTo(root.get("dataVencimento"), condominioFilter.getMesAno()));
 
 		}
+		if (condominioFilter.getId() != null) {
+			predicates.add(builder.greaterThanOrEqualTo(root.get("id"), condominioFilter.getId()));
+
+		}
 
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}

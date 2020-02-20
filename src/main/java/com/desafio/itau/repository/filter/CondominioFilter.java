@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class CondominioFilter {
+	
+	private Integer id;
 
 	private String email;
 	
@@ -36,6 +38,14 @@ public class CondominioFilter {
 
 	public void setAno(LocalDate ano) {
 		this.ano = ano;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 

@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Despesa extends AbstractEntity {
@@ -20,6 +21,7 @@ public class Despesa extends AbstractEntity {
 	@JsonFormat(pattern = "dd/MM/yyyy HH:mm")
 	private Date data;
 
+	@JsonIgnore
 	@ManyToOne
 	private Condominio condominio;
 

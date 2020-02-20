@@ -1,5 +1,6 @@
 package com.desafio.itau.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.desafio.itau.conversor.CondominioMapper;
 import com.desafio.itau.dominio.Condominio;
+import com.desafio.itau.dto.CondominioDTO;
 import com.desafio.itau.repository.CondominioRepository;
 import com.desafio.itau.repository.filter.CondominioFilter;
 import com.desafio.itau.service.exceptions.ObjectNotFoundException;
@@ -17,6 +20,9 @@ public class CondominioService {
 	
 	@Autowired
 	private CondominioRepository condominioRepository;
+	
+	@Autowired
+	private CondominioMapper condominioMapper;
 	
 	public Condominio buscar(Integer id) {
 		Optional<Condominio> condominio = condominioRepository.findById(id);
@@ -29,4 +35,7 @@ public class CondominioService {
 		return condominioRepository.filtrar(condominioFilter, pageable);
 	}
 	
+	public List<Condominio> buscarLista() {
+		return condominioRepository.findAll();
+	}
 }
