@@ -15,7 +15,7 @@ import com.desafio.itau.service.CondominioService;
 
 @RestController
 @RequestMapping("/condominio")
-public class CondominioController {
+public class CondominioResource {
 	
 	@Autowired
 	private CondominioService condominioService;

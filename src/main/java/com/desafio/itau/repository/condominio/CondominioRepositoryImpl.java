@@ -44,9 +44,9 @@ public class CondominioRepositoryImpl implements CondominioRepositoryQuery {
 			Root<Condominio> root) {
 		List<Predicate> predicates = new ArrayList<>();
 
-		if (!StringUtils.isEmpty(condominioFilter.getProprietario())) {
-			predicates.add(builder.like(builder.lower(root.get("proprietario")),
-					"%" + condominioFilter.getProprietario().toLowerCase() + "%"));
+		if (!StringUtils.isEmpty(condominioFilter.getEmail())) {
+			predicates.add(builder.like(builder.lower(root.get("email")),
+					"%" + condominioFilter.getEmail().toLowerCase() + "%"));
 		}
 		if (condominioFilter.getAno() != null) {
 			predicates.add(builder.greaterThanOrEqualTo(root.get("dataVencimento"), condominioFilter.getAno()));

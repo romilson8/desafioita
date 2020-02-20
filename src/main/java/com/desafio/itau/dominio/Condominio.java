@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,10 +25,11 @@ public class Condominio extends AbstractEntity {
 	
 	private Integer numeroDeApt;
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@OneToMany(mappedBy="condominio")
 	private List<Apartamento> apartamentos;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="condominio")
 	private List<Despesa> despesas;
 
