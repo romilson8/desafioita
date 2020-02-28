@@ -3,6 +3,7 @@ package com.desafio.itau.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,12 +21,10 @@ public class CondominioService {
 	@Autowired
 	private CondominioRepository condominioRepository;
 	
-//	@Autowired
-//	private CondominioMapper mapper;
-//	
-//	@Autowired
-//	private CondominioMapper condominioMapper;
-//	
+	@Autowired
+	private ModelMapper mapper;
+	
+
 	public Condominio buscar(Integer id) {
 		Optional<Condominio> condominio = condominioRepository.findById(id);
 		
@@ -43,13 +42,7 @@ public class CondominioService {
 
 	public CondominioDTO converter(Condominio condominio) {
 		
-		CondominioDTO condominioDTO = new CondominioDTO();
-		condominioDTO.setId(condominio.getId());
-		condominioDTO.setNome(condominio.getNome());
-		condominioDTO.setEmail(condominio.getEmail());
-		condominioDTO.setNumeroApartamentos(condominio.getNumeroDeApt());
-		condominioDTO.setValorRateio(condominio.getValorRateio());
-		
+		CondominioDTO condominioDTO = mapper.map(condominio, CondominioDTO.class);
 		return condominioDTO;
 	}
 

@@ -1,6 +1,8 @@
 package com.desafio.itau.resource;
 
-import org.modelmapper.ModelMapper;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,29 +23,24 @@ public class CondominioResource {
 	
 	@Autowired
 	private CondominioService condominioService;
+
 	
-//	@Autowired
-//	private ModelMapper mapper;
-	
-//	@GetMapping(value="/lista")
-//	public ResponseEntity<List<CondominioDTO>> listar(){
-//		
-//		List<Condominio> condominio = condominioService.buscarLista();
-//		
-//		List<CondominioDTO> condominioDTO = condominio.stream().map(obj -> new CondominioDTO(obj))
-//				.collect(Collectors.toList());
-//		
-//		return ResponseEntity.ok().body(condominioDTO);
-//	}
+	@GetMapping(value="/lista")
+	public ResponseEntity<List<CondominioDTO>> listar(){
+		
+		List<Condominio> condominio = condominioService.buscarLista();
+		
+		List<CondominioDTO> condominioDTO = condominio.stream().map(obj -> new CondominioDTO(obj))
+				.collect(Collectors.toList());
+		
+		return ResponseEntity.ok().body(condominioDTO);
+	}
 	
 	@GetMapping(value="/{id}")
 	public ResponseEntity<CondominioDTO> listar(@PathVariable(value="id") Integer id){
 		
 		Condominio condominio = condominioService.buscar(id);
-//		CondominioDTO condominioDTO = mapper.map(condominio, CondominioDTO.class);
-		CondominioDTO condominioDTO = new ModelMapper().map(condominio, CondominioDTO.class);
-
-		
+		CondominioDTO condominioDTO = condominioService.converter(condominio);
 		return ResponseEntity.ok().body(condominioDTO);
 	}
 	

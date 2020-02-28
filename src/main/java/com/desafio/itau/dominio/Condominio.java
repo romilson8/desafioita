@@ -49,7 +49,7 @@ public class Condominio implements Serializable {
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.email = email;
-		this.numeroDeApt = numeroDeApt;
+		this.setNumeroDeApt(numeroDeApt);
 	}
 
 	public Integer getId() {
@@ -107,6 +107,7 @@ public class Condominio implements Serializable {
 	public void setDespesas(List<Despesa> despesas) {
 		this.despesas = despesas;
 	}
+
 
 	public Integer getNumeroDeApt() {
 		return numeroDeApt;
