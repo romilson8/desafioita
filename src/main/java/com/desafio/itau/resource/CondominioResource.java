@@ -1,7 +1,6 @@
 package com.desafio.itau.resource;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,9 +28,7 @@ public class CondominioResource {
 	public ResponseEntity<List<CondominioDTO>> listar(){
 		
 		List<Condominio> condominio = condominioService.buscarLista();
-		
-		List<CondominioDTO> condominioDTO = condominio.stream().map(obj -> new CondominioDTO(obj))
-				.collect(Collectors.toList());
+		List<CondominioDTO> condominioDTO = condominioService.converter(condominio);
 		
 		return ResponseEntity.ok().body(condominioDTO);
 	}

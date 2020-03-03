@@ -1,10 +1,15 @@
 package com.desafio.itau.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.desafio.itau.conversor.CondominioSerializer;
+import com.desafio.itau.dominio.Apartamento;
 import com.desafio.itau.dominio.Condominio;
 import com.desafio.itau.dominio.Despesa;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+@JsonSerialize(using = CondominioSerializer.class)
 public class CondominioDTO {
 	
 
@@ -13,8 +18,8 @@ public class CondominioDTO {
 	private String email;
 	private Integer numeroDeApt;
 	private double valorRateio;
-	private List<Despesa> despesas;
-	private List<ProprietarioDTO> proprietario;
+	private List<Despesa> despesas = new ArrayList<>();
+	private List<Apartamento> apartamentos = new ArrayList<>();
 	
 	public CondominioDTO() {
 		// TODO Auto-generated constructor stub
@@ -27,6 +32,7 @@ public class CondominioDTO {
 		this.setNumeroDeApt(condominio.getNumeroDeApt());
 		this.valorRateio = condominio.getValorRateio();
 		this.despesas = condominio.getDespesas();
+		this.apartamentos = condominio.getApartamentos();
 	}
 	
 	public Integer getId() {
@@ -70,20 +76,20 @@ public class CondominioDTO {
 		this.despesas = despesas;
 	}
 
-	public List<ProprietarioDTO> getProprietario() {
-		return proprietario;
-	}
-
-	public void setProprietario(List<ProprietarioDTO> proprietario) {
-		this.proprietario = proprietario;
-	}
-
 	public Integer getNumeroDeApt() {
 		return numeroDeApt;
 	}
 
 	public void setNumeroDeApt(Integer numeroDeApt) {
 		this.numeroDeApt = numeroDeApt;
+	}
+
+	public List<Apartamento> getApartamentos() {
+		return apartamentos;
+	}
+
+	public void setApartamentos(List<Apartamento> apartamentos) {
+		this.apartamentos = apartamentos;
 	}
 
 }

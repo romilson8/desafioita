@@ -1,6 +1,7 @@
 package com.desafio.itau.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "condominio")
@@ -33,11 +34,13 @@ public class Condominio implements Serializable {
 
 	private Integer numeroDeApt;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "condominio")
-	private List<Apartamento> apartamentos;
+	private List<Apartamento> apartamentos = new ArrayList<>();
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "condominio")
-	private List<Despesa> despesas;
+	private List<Despesa> despesas = new ArrayList<>();
 
 	public Condominio() {
 	}

@@ -2,6 +2,7 @@ package com.desafio.itau.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,11 @@ public class CondominioService {
 		CondominioDTO condominioDTO = mapper.map(condominio, CondominioDTO.class);
 		return condominioDTO;
 	}
-
+	
+	public List<CondominioDTO> converter(List<Condominio> condominios) {
+		
+		List<CondominioDTO> condominioDTO = condominios.stream().map(obj -> new CondominioDTO(obj))
+				.collect(Collectors.toList());
+		return condominioDTO;
+	}
 }
