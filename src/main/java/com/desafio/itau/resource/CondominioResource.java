@@ -23,7 +23,6 @@ public class CondominioResource {
 	@Autowired
 	private CondominioService condominioService;
 
-	
 	@GetMapping(value="/lista")
 	public ResponseEntity<List<CondominioDTO>> listar(){
 		
