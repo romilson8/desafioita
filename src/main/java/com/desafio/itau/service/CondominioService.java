@@ -19,11 +19,16 @@ import com.desafio.itau.service.exceptions.ObjectNotFoundException;
 @Service
 public class CondominioService implements ICondominioService {
 
-	@Autowired
-	private CondominioRepository condominioRepository;
+	
+	private final CondominioRepository condominioRepository;
 
 	@Autowired
-	private ModelMapper mapper;
+	public CondominioService(CondominioRepository condominioRepository, ModelMapper mapper) {
+		this.condominioRepository = condominioRepository;
+		this.mapper = mapper;
+	}
+
+	private final ModelMapper mapper;
 
 	@Override
 	public Condominio buscar(Integer id) {
@@ -60,7 +65,6 @@ public class CondominioService implements ICondominioService {
 						.nome(obj.getNome())
 						.email(obj.getEmail())
 						.numeroDeApt(obj.getNumeroDeApt())
-						.valorRateio(obj.getValorRateio())
 						.despesas(obj.getDespesas())
 						.apartamentos(obj.getApartamentos())
 						.build())

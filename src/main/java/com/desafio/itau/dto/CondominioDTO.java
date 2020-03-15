@@ -26,7 +26,6 @@ public class CondominioDTO {
 	private String nome;
 	private String email;
 	private Integer numeroDeApt;
-	private double valorRateio;
 	private List<Despesa> despesas;
 	private List<Apartamento> apartamentos;
 

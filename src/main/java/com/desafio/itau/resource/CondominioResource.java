@@ -15,6 +15,7 @@ import com.desafio.itau.dominio.Condominio;
 import com.desafio.itau.dto.CondominioDTO;
 import com.desafio.itau.repository.filter.CondominioFilter;
 import com.desafio.itau.service.ICondominioService;
+import com.desafio.itau.view.ResponseView;
 
 @RestController
 @RequestMapping("/condominio")
@@ -24,20 +25,22 @@ public class CondominioResource {
 	private ICondominioService condominioService;
 
 	@GetMapping(value="/lista")
-	public ResponseEntity<List<CondominioDTO>> listar(){
+	public ResponseEntity<ResponseView> listar(){
 		
 		List<Condominio> condominio = condominioService.buscarLista();
 		List<CondominioDTO> condominioDTO = condominioService.converter(condominio);
+		ResponseView response = ResponseView.builder().data(condominioDTO).message("Lista Pronta").success(true).build();
 		
-		return ResponseEntity.ok().body(condominioDTO);
+		return ResponseEntity.ok().body(response);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<CondominioDTO> listar(@PathVariable(value="id") Integer id){
+	public ResponseEntity<ResponseView> listar(@PathVariable(value="id") Integer id){
 		
 		Condominio condominio = condominioService.buscar(id);
 		CondominioDTO condominioDTO = condominioService.converter(condominio);
-		return ResponseEntity.ok().body(condominioDTO);
+		ResponseView response = ResponseView.builder().data(condominioDTO).message("Lista Pronta").success(true).build();
+		return ResponseEntity.ok().body(response);
 	}
 	
 	@GetMapping
