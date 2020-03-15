@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.desafio.itau.dominio.Condominio;
 import com.desafio.itau.dto.CondominioDTO;
 import com.desafio.itau.repository.filter.CondominioFilter;
-import com.desafio.itau.service.CondominioService;
+import com.desafio.itau.service.ICondominioService;
 
 @RestController
 @RequestMapping("/condominio")
 public class CondominioResource {
 	
 	@Autowired
-	private CondominioService condominioService;
+	private ICondominioService condominioService;
 
 	@GetMapping(value="/lista")
 	public ResponseEntity<List<CondominioDTO>> listar(){

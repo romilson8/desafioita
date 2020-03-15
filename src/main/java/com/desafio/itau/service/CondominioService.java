@@ -17,39 +17,53 @@ import com.desafio.itau.repository.filter.CondominioFilter;
 import com.desafio.itau.service.exceptions.ObjectNotFoundException;
 
 @Service
-public class CondominioService {
-	
+public class CondominioService implements ICondominioService {
+
 	@Autowired
 	private CondominioRepository condominioRepository;
-	
+
 	@Autowired
 	private ModelMapper mapper;
-	
 
+	@Override
 	public Condominio buscar(Integer id) {
 		Optional<Condominio> condominio = condominioRepository.findById(id);
-		
+
 		return condominio.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Condominio.class.getName()));
 	}
 
+	@Override
 	public Page<Condominio> pesquisar(CondominioFilter condominioFilter, Pageable pageable) {
 		return condominioRepository.filtrar(condominioFilter, pageable);
 	}
-	
+
+	@Override
 	public List<Condominio> buscarLista() {
 		return condominioRepository.findAll();
 	}
 
+	@Override
 	public CondominioDTO converter(Condominio condominio) {
-		
+
 		CondominioDTO condominioDTO = mapper.map(condominio, CondominioDTO.class);
 		return condominioDTO;
 	}
-	
+
+	@Override
 	public List<CondominioDTO> converter(List<Condominio> condominios) {
-		
-		List<CondominioDTO> condominioDTO = condominios.stream().map(obj -> new CondominioDTO(obj))
+
+		List<CondominioDTO> condominioDTO = 
+				condominios.stream()
+				.map(obj -> CondominioDTO.builder()
+						.id(obj.getId())
+						.nome(obj.getNome())
+						.email(obj.getEmail())
+						.numeroDeApt(obj.getNumeroDeApt())
+						.valorRateio(obj.getValorRateio())
+						.despesas(obj.getDespesas())
+						.apartamentos(obj.getApartamentos())
+						.build())
 				.collect(Collectors.toList());
 		return condominioDTO;
 	}
