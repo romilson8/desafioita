@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafio.itau.dominio.Condominio;
+import com.desafio.itau.dominio.ResponseView;
 import com.desafio.itau.dto.CondominioDTO;
 import com.desafio.itau.repository.filter.CondominioFilter;
 import com.desafio.itau.service.ICondominioService;
-import com.desafio.itau.view.ResponseView;
 
 @RestController
 @RequestMapping("/condominio")

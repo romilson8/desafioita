@@ -1,4 +1,4 @@
-package com.desafio.itau.view;
+package com.desafio.itau.dominio;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
