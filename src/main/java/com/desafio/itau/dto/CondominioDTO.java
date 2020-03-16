@@ -1,64 +1,32 @@
 package com.desafio.itau.dto;
 
-import com.desafio.itau.dominio.Condominio;
+import java.util.List;
 
+import com.desafio.itau.conversor.CondominioSerializer;
+import com.desafio.itau.dominio.Apartamento;
+import com.desafio.itau.dominio.Despesa;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonSerialize(using = CondominioSerializer.class)
 public class CondominioDTO {
 	
+
 	private Integer id;
 	private String nome;
 	private String email;
-	private Integer numeroApartamentos;
-	private double valorRateio;
-	
-	public CondominioDTO() {
-	}
-
-	public CondominioDTO(Condominio condominio) {
-		id = condominio.getId();
-		nome = condominio.getNome();
-		email = condominio.getEmail();
-		numeroApartamentos = condominio.getNumeroDeApt();
-		valorRateio = condominio.getValorRateio();
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public Integer getNumeroApartamentos() {
-		return numeroApartamentos;
-	}
-
-	public double getValorRateio() {
-		return valorRateio;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setNumeroApartamentos(Integer numeroApartamentos) {
-		this.numeroApartamentos = numeroApartamentos;
-	}
-
-	public void setValorRateio(double valorRateio) {
-		this.valorRateio = valorRateio;
-	}
+	private Integer numeroDeApt;
+	private List<Despesa> despesas;
+	private List<Apartamento> apartamentos;
 
 }
