@@ -23,6 +23,11 @@ public class CondominioResource {
 	
 	@Autowired
 	private ICondominioService condominioService;
+	
+	@GetMapping
+	public String hello(){
+		return "Hello Heroku";
+	}
 
 	@GetMapping(value="/lista")
 	public ResponseEntity<ResponseView> listar(){
