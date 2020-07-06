@@ -24,7 +24,7 @@ public class CondominioResource {
 	@Autowired
 	private ICondominioService condominioService;
 	
-	@GetMapping
+	@GetMapping("/hello")
 	public String hello(){
 		return "Hello Heroku";
 	}
